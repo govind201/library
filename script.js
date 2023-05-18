@@ -7,11 +7,11 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-function addBookToLibrary(book) {
+const addBookToLibrary = (book) => {
   myLibrary.push(book);
 }
 
-function displayBooks() {
+const displayBooks = () => {
   const bookList = document.getElementById('book-list');
   bookList.innerHTML = '';
 
@@ -53,13 +53,13 @@ function displayBooks() {
   }
 }
 
-function removeBook(event) {
+const removeBook = (event) => {
   const index = event.target.getAttribute('data-index');
   myLibrary.splice(index, 1);
   displayBooks();
 }
 
-function toggleReadStatus(event) {
+const toggleReadStatus = (event) => {
   const index = event.target.getAttribute('data-index');
   myLibrary[index].read = !myLibrary[index].read;
   displayBooks();
