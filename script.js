@@ -1,17 +1,19 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
+const Book = (title, author, pages, read) => {
+  return {
+    title,
+    author,
+    pages,
+    read,
+  };
+};
 
-function addBookToLibrary(book) {
+const addBookToLibrary = (book) => {
   myLibrary.push(book);
-}
+};
 
-function displayBooks() {
+const displayBooks = () => {
   const bookList = document.getElementById("book-list");
   bookList.innerHTML = "";
 
@@ -19,9 +21,9 @@ function displayBooks() {
     const bookCard = createBookCard(book, index);
     bookList.appendChild(bookCard);
   });
-}
+};
 
-function createBookCard(book, index) {
+const createBookCard = (book, index) => {
   const bookCard = document.createElement("div");
   bookCard.classList.add("book-card");
 
@@ -55,19 +57,19 @@ function createBookCard(book, index) {
   bookCard.appendChild(toggleReadBtn);
 
   return bookCard;
-}
+};
 
-function removeBook(event) {
+const removeBook = (event) => {
   const index = event.target.getAttribute("data-index");
   myLibrary.splice(index, 1);
   displayBooks();
-}
+};
 
-function toggleReadStatus(event) {
+const toggleReadStatus = (event) => {
   const index = event.target.getAttribute("data-index");
   myLibrary[index].read = !myLibrary[index].read;
   displayBooks();
-}
+};
 
 const newBookBtn = document.getElementById("new-book-btn");
 const newBookForm = document.getElementById("new-book-form");
@@ -84,7 +86,7 @@ bookForm.addEventListener("submit", (event) => {
   const pagesInput = document.getElementById("pages");
   const readInput = document.getElementById("read");
 
-  const newBook = new Book(
+  const newBook = Book(
     titleInput.value,
     authorInput.value,
     parseInt(pagesInput.value),
@@ -102,9 +104,9 @@ bookForm.addEventListener("submit", (event) => {
   newBookForm.style.display = "none";
 });
 
-addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", 300, false));
+addBookToLibrary(Book("The Hobbit", "J.R.R. Tolkien", 300, false));
 addBookToLibrary(
-  new Book("Harry Potter and the Prisoner of Azkaban", "J.K Rowling", 281, true)
+  Book("Harry Potter and the Prisoner of Azkaban", "J.K Rowling", 281, true)
 );
 
 displayBooks();
