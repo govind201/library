@@ -8,7 +8,9 @@ h1 {
   justify-content: center;
   gap: 20px;
 }
-
+#new-book-form {
+  display: none;
+}
 .book-card {
   border: 1px solid #ccc;
   padding: 10px;
